@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class CreateStream {
@@ -27,6 +29,11 @@ public class CreateStream {
         System.out.println("==================");
         createStreamFromIterator().forEach(System.out::println);
 
+        System.out.println("==================");
+        createStreamFromGenerate().forEach(System.out::println);
+
+        System.out.println("==================");
+        createObjStreamFromGenerate().forEach(i -> System.out.println(i));
     }
 
 
@@ -70,5 +77,70 @@ public class CreateStream {
 
 
         return stream;
+    }
+
+    private static Stream<Double> createStreamFromGenerate(){
+
+        return Stream.generate(Math::random).limit(10);
+    }
+
+
+    private static Stream<Obj> createObjStreamFromGenerate(){
+
+        return Stream.generate(new ObjSuppiler()).limit(50);
+    }
+
+
+
+    static class ObjSuppiler implements Supplier<Obj>{
+        private int index = 0;
+
+        private Random random = new Random(System.currentTimeMillis());
+
+        @Override
+        public Obj get() {
+            index = random.nextInt(100);
+            return new Obj(index,"Name->" + index);
+        }
+    }
+
+
+    static class Obj{
+
+        private int id;
+
+        private String name;
+
+        public Obj() {
+        }
+
+        public Obj(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Obj{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 }

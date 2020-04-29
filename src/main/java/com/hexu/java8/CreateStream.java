@@ -25,7 +25,7 @@ public class CreateStream {
 
 
         System.out.println("==================");
-
+        createStreamFromIterator().forEach(System.out::println);
 
     }
 
@@ -61,5 +61,14 @@ public class CreateStream {
 
         return null;
 
+    }
+
+    private static Stream<Integer> createStreamFromIterator(){
+
+
+        Stream<Integer> stream = Stream.iterate(1,n -> n + 1).limit(15);
+
+
+        return stream;
     }
 }

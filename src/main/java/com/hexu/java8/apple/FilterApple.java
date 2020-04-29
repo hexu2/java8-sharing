@@ -3,6 +3,7 @@ package com.hexu.java8.apple;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Spliterator;
 
 public class FilterApple {
 
@@ -51,6 +52,7 @@ public class FilterApple {
         });
 
         System.out.println(greenApplesNew.size());
+
 
     }
 

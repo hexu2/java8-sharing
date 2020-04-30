@@ -10,10 +10,8 @@ public class Dish {
 
     private Type type;
 
-
     public Dish() {
     }
-
 
     public Dish(String name, boolean vegetarain, int calories, Type type) {
         this.name = name;
@@ -21,7 +19,6 @@ public class Dish {
         this.calories = calories;
         this.type = type;
     }
-
 
     public String getName() {
         return name;
@@ -55,20 +52,9 @@ public class Dish {
         this.type = type;
     }
 
-
-    @Override
-    public String toString() {
-        return "Dish{" +
-                "name='" + name + '\'' +
-                ", vegetarain=" + vegetarain +
-                ", calories=" + calories +
-                ", type=" + type +
-                '}';
-    }
-
-    public enum Type {
+    public enum  Type {
         MEAT,
-        OTHER,
-        FISH
+        UNKNOW,
+        OTHER
     }
 }

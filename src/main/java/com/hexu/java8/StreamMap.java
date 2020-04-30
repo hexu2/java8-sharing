@@ -7,8 +7,17 @@ import java.util.stream.Stream;
 
 public class StreamMap {
 
-    public StreamMap() {
+    private static List<Dish> listDish(){
 
+
+        List<Dish> menu = Arrays.asList(new Dish("pork",false,800,Dish.Type.MEAT),
+                new Dish("pork",false,800,Dish.Type.MEAT),
+                new Dish("beff",false,700,Dish.Type.MEAT),
+                new Dish("checken",false,1000,Dish.Type.MEAT),
+                new Dish("rice",false,200,Dish.Type.MEAT),
+                new Dish("pizaa",false,50,Dish.Type.MEAT));
+
+        return menu;
     }
 
     public static void main(String[] args) {
@@ -27,6 +36,23 @@ public class StreamMap {
         System.out.println(result);
 
 
+        List<String> disheNames= listDish().stream().map(d -> d.getName()).collect(Collectors.toList());
+
+        System.out.println(disheNames);
+
+
+        System.out.println("========================");
+
+
+        String [] words = {"hello", "world"};
+
+        Stream<String[]> streamW =   Arrays.asList(words).stream().map(w -> w.split(""));//Stream<String[]>
+//        streamW.collect(Collectors.toList());
+//        System.out.println(streamW.collect(Collectors.toList()));
+//        streamW.flatMap()
+
+        Stream<String>  stringStream  = streamW.flatMap(Arrays::stream);
+        stringStream.distinct().forEach(System.out::println);
 
     }
 }

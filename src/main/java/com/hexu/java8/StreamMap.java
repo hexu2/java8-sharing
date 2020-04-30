@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 public class StreamMap {
 
     public StreamMap() {
+
     }
 
     public static void main(String[] args) {
